@@ -1,0 +1,26 @@
+body{
+
+}
+#new_user{
+  margin-top: 100px;
+}
+.control{
+
+  width: 30%;
+  margin-left: 20%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 10px 10px 5px #888888;
+
+}
+
+#button{
+  background-color: green;
+  width: 200px;
+  height: 70px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+
+
+}

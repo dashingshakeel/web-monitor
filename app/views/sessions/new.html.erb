@@ -2,32 +2,27 @@
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
   <% provide(:title, 'user') %>
 
-      <%= render 'shared/error_message' %>
-<div class="contolo"> <div class="control">
- <%= form_for(@user, url: signup_path) do |f| %>
      
-
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
+      <link rel="stylesheet" type="text/css" href="users">
+<div class="contolo"> <div class="control">
+ <%= form_for(:session, url: login_path) do |f| %>
+     
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "Create my account", class: "btn btn-primary" , id: "button"%>
+      
+      <%= f.submit "Login", class: "btn btn-primary" , id: "button"%>
     <% end %>
 
 </div>
 
 
   
-<div class="already"><h1>Already have a account?</h1>
-  <p>Awesome</p>
-  <a href="/login">Login</a>
+<div class="already"><h1>You are new? </h1>
+  <p>Signup now</p>
+  <a href="/signup">Signup</a>
 </div>
 </div> 

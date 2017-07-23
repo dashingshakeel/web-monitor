@@ -18,8 +18,12 @@
         <li><a href="">Downloads</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Contacts</a></li>
+        <% if logged_in? %>
+        <li><%= link_to "logout", logout_path, method: :delete %></li>
+        <% else %>
         <li class="signup"><a href="/signup">signup</a></li>
-        <li><a href="">Login</a></li>
+        <li><a href="/login">Login</a></li>
+        <% end %>
       </ul>
 
     </div>

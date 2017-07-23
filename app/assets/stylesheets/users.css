@@ -35,6 +35,31 @@ body{
   box-shadow: 0;
   transition: 0.7s;
 }
+#button1{
+  width: 200px;
+  height: 70px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  background-color: #2E3E4E;
+  color: white;
+  transition: 0.2s;
+  float: right;
+  text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  box-shadow: 10px 10px 5px #888888;
+ 
+
+}
+#button1:hover{
+  background-color: white;
+  color: #2E3E4E;
+  transition: 0.2s;
+  border-right: 0;
+  box-shadow: 0;
+  transition: 0.7s;
+}
 .already{
   float: right;
   margin-top: 100px;

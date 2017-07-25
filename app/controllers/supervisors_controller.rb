@@ -24,11 +24,12 @@ class SupervisorsController < ApplicationController
   # POST /supervisors
   # POST /supervisors.json
   def create
-    @supervisor = Supervisor.new(supervisor_params)
+    @user = User.find(current_user.id)
+    @supervisor = current_user.supervisors.build(supervisor_params)
 
     respond_to do |format|
       if @supervisor.save
-        format.html { redirect_to @supervisor, notice: 'Supervisor was successfully created.' }
+        format.html { redirect_to @user, notice: 'Supervisor was successfully created.' }
         format.json { render :show, status: :created, location: @supervisor }
       else
         format.html { render :new }
@@ -41,8 +42,10 @@ class SupervisorsController < ApplicationController
   # PATCH/PUT /supervisors/1.json
   def update
     respond_to do |format|
+
+    @user = User.find(current_user.id)
       if @supervisor.update(supervisor_params)
-        format.html { redirect_to @supervisor, notice: 'Supervisor was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Supervisor was successfully updated.' }
         format.json { render :show, status: :ok, location: @supervisor }
       else
         format.html { render :edit }
@@ -54,9 +57,11 @@ class SupervisorsController < ApplicationController
   # DELETE /supervisors/1
   # DELETE /supervisors/1.json
   def destroy
+
+    @user = User.find(current_user.id)
     @supervisor.destroy
     respond_to do |format|
-      format.html { redirect_to supervisors_url, notice: 'Supervisor was successfully destroyed.' }
+      format.html { redirect_to @user, notice: 'Supervisor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +74,6 @@ class SupervisorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supervisor_params
-      params.require(:supervisor).permit(:name,:url)
+      params.require(:supervisor).permit(:name,:url,:user_id)
     end
 end

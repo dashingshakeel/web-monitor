@@ -110,12 +110,11 @@ body {
 }
 
 .user {
-    width: 90%;
+    width: 100%;
     z-index: 2;
-    max-width: 340px;
+    max-width: 500px;
     margin: 10vh auto;
     position: fixed;
-
     margin-left: 30%;
 }
 
@@ -188,11 +187,11 @@ body {
 .is-visuallyHidden { opacity: 0; }
 .Close {
 
-  color: #aaaaaa;
+  color: white;
 
   float: right;
 
-  font-size: 16px;
+  font-size: 30px;
 
 }
 

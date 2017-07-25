@@ -1,10 +1,10 @@
 <%= link_to "LOG OUT", logout_path, method: :delete ,class: "btn btn-primary" , id: "button1"%>
-<link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min">
 
-      <%= render 'shared/add_supervisor' %>
+
+  
 
 <div class="left-supervisors">
-<button class="btn btn-primary btn-bordered" id="button2">Add Supervisor</button>
+<%= link_to "Add new", new_supervisor_path,class: "btn btn-primary" , id: "button2"%>
   <table>
   <thead>
     <tr>
@@ -31,23 +31,4 @@
 </div>
 
 
-<script>
-  
-$(document).ready(function(){
 
-     var body = $('body');
-  $('#button2').click(function () {
-    $('.user').show();
-     console.log(body);
-     body.contents().not('.user').addClass('is-blurred');
-
-      });
-
-  $('.Close').click(function () { 
-    $('.user').hide();
-    body.contents().removeClass('is-blurred');
-    /* body... */
-  });
-
-});
-</script>

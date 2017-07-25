@@ -11,7 +11,7 @@
   <body>
   <div id="header">
  
-    <div class="left-nav"></div>
+    <a href="/"><div class="left-nav"></div></a> 
     <div class="right-nav">
       <ul class="navbar">
         <li><a href="/">Main</a></li>
@@ -19,7 +19,8 @@
         <li><a href="">About</a></li>
         <li><a href="">Contacts</a></li>
         <% if logged_in? %>
-        <li><%= link_to "logout", logout_path, method: :delete %></li>
+        <li><%= link_to "logout", logout_path, method: :delete, class: "signup" %></li>
+        <li><%= link_to "Monitors", user_path(current_user) %></li>
         <% else %>
         <li class="signup"><a href="/signup">signup</a></li>
         <li><a href="/login">Login</a></li>

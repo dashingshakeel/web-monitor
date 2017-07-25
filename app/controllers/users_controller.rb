@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+  before_filter :validate_user,:only => :show
   def new
+    if current_user.nil?
 
-    @user = User.new(user_params)
+      @user = User.new(user_params)
+    else
+      redirect_to root_path
+    end
   end
   def show
     @user = User.find(params[:id]) 
@@ -26,4 +31,16 @@ class UsersController < ApplicationController
       params.fetch(:user,{}).permit(:name, :email, :password,
                                    :password_confirmation)
     end
+    def validate_user
+      if !current_user.nil?
+        redirect_to root_path unless current_user.id.to_s == params[:id]
+      else
+        redirect_to root_path
+      end
+      
+      
+    end
+   
+      
+
 end

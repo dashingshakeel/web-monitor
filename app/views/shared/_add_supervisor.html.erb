@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+<div class="user">
+    <header class="user__header">
+         <span id="closeModal" class="Close">&times;</span>
+
+        <h1 class="user__title">AADD Supervisor</h1>
+    </header>
+    
+    <form class="form">
+        <div class="form__group">
+            <input id="name" type="text" placeholder="Name" class="form__input" />
+        </div>
+        
+        <div class="form__group">
+            <input id="url" type="email" placeholder="URL" class="form__input" />
+        </div>
+          <div class="form__group">
+            <input id="url" type="range" placeholder="URL" class="form__input" />
+        </div>
+        
+        <button class="btn" type="button">Register</button>
+    </form>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+   
+        $(".user").hide();
+
+});
+
+</script>

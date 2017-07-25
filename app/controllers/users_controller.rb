@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id]) 
     @supervisors = @user.supervisors
+    @supervisor = Supervisor.new(supervisor_params)
   end
 
   def create
@@ -40,6 +41,9 @@ class UsersController < ApplicationController
       end
       
       
+    end
+    def supervisor_params
+      params.fetch(:supervisor,{}).permit(:name,:url)
     end
    
       

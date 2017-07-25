@@ -1,7 +1,10 @@
 <%= link_to "LOG OUT", logout_path, method: :delete ,class: "btn btn-primary" , id: "button1"%>
+<link rel="stylesheet" type="text/css" href="../font-awesome-4.7.0/css/font-awesome.min">
+
+      <%= render 'shared/add_supervisor' %>
 
 <div class="left-supervisors">
-  <h5><button class="btn btn-primary btn-bordered" id="button2">Add Supervisor</button></h5>
+<button class="btn btn-primary btn-bordered" id="button2">Add Supervisor</button>
   <table>
   <thead>
     <tr>
@@ -15,10 +18,10 @@
     <% @supervisors.each do |supervisor| %>
       <tr>
           <td><%= link_to supervisor.name, supervisor %></td>
-        <td><%= supervisor.url %></td>
+        <td class="url"><%= supervisor.url %></td>
     
         <td><%= link_to 'Edit', edit_supervisor_path(supervisor) %></td>
-        <td><%= link_to 'Destroy', supervisor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'x', supervisor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,3 +29,25 @@
 
 
 </div>
+
+
+<script>
+  
+$(document).ready(function(){
+
+     var body = $('body');
+  $('#button2').click(function () {
+    $('.user').show();
+     console.log(body);
+     body.contents().not('.user').addClass('is-blurred');
+
+      });
+
+  $('.Close').click(function () { 
+    $('.user').hide();
+    body.contents().removeClass('is-blurred');
+    /* body... */
+  });
+
+});
+</script>

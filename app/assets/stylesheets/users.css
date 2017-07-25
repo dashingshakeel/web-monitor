@@ -60,6 +60,32 @@ body{
   box-shadow: 0;
   transition: 0.7s;
 }
+
+#button2{
+  width: 200px;
+  height: 70px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  background-color: #2E3E4E;
+  color: white;
+  transition: 0.2s;
+  float: left;
+  text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  box-shadow: 10px 10px 5px #888888;
+ 
+
+}
+#button2:hover{
+  background-color: white;
+  color: #2E3E4E;
+  transition: 0.2s;
+  border-right: 0;
+  box-shadow: 0;
+  transition: 0.7s;
+}
 .already{
   float: right;
   margin-top: 100px;
@@ -68,6 +94,25 @@ body{
   color: white;
   padding: 35px;
   text-align: center;
+}
+table{
+  float: left;
+  margin-top: 150px;
+  background-color:  #2E3E4E;
+  color: white;
+  padding: 15px;
+  font-size: 30px;
+  box-shadow: 10px 10px 5px #888888;
+}
+tbody{
+  background-color: white;
+  color:   #2E3E4E;
+  border-radius: 32px;
+
+
+}
+thead tr{
+  margin-bottom: 20px;
 }
 .already a{
   padding: 10px;

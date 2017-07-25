@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id]) 
+    @supervisors = @user.supervisors
   end
 
   def create

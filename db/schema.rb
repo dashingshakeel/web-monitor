@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726051305) do
+ActiveRecord::Schema.define(version: 20170726053638) do
 
   create_table "services", force: :cascade do |t|
     t.integer  "type_id"
@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(version: 20170726051305) do
     t.integer  "duration"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "supervisor_id"
+    t.index ["supervisor_id"], name: "index_services_on_supervisor_id"
     t.index ["type_id"], name: "index_services_on_type_id"
   end
 

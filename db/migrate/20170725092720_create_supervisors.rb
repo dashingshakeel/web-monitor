@@ -4,7 +4,7 @@ class CreateSupervisors < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :url
       t.references :user, foreign_key: true
-
+      
       t.timestamps
     end
   end

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :supervisors
+  has_many :supervisors, dependent: :destroy
 
 
 

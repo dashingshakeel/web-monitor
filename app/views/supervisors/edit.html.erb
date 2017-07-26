@@ -1,6 +1,6 @@
 <%= link_to "Back", user_path(current_user),class: "btn btn-primary" , id: "button2"%>
 <%= link_to "LOG OUT", logout_path, method: :delete ,class: "btn btn-primary" , id: "button1"%>
-
+<div class="contolo"> <div class="control">
 
 
 <%= form_for(@supervisor) do |f| %>
@@ -18,14 +18,17 @@
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <br>
+    <%= f.text_field :name , class: 'form-control' %>
   </div>
  <div class="field">
     <%= f.label :url %>
-    <%= f.text_field :url %>
+    <br>
+    <%= f.text_field :url, class: 'form-control'  %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit "Update", class: "btn btn-primary" , id: "button"%>
+    </div>
 <% end %>
+</div>

@@ -1,6 +1,6 @@
 <%= link_to "Back", user_path(current_user),class: "btn btn-primary" , id: "button2"%>
 <%= link_to "LOG OUT", logout_path, method: :delete ,class: "btn btn-primary" , id: "button1"%>
-
+<div class="contolo"> <div class="control">
 
 
 <%= form_for(@supervisor) do |f| %>
@@ -18,14 +18,41 @@
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <br>
+    <%= f.text_field :name , class: 'form-control' %>
   </div>
  <div class="field">
     <%= f.label :url %>
-    <%= f.text_field :url %>
+    <br>
+    <%= f.text_field :url, class: 'form-control'  %>
   </div>
 
+
+  <% f.fields_for :services do |ff| %>
+    <div class="field">
+    <%= ff.time_select :start_time, :minute_step => 15, :ampm => true %>
+    </div>
+    <div class="field">
+     <%= ff.range_field_tag :duration, 30, :min => 5, :max => 60 ,:step => 5 %>
+      <div id='target'>30</div>
+    </div>
+    <div class="field">
+    <%= ff.time_select :end_time, :minute_step => 15, :ampm => true %>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit "create", class: "btn btn-primary" , id: "button"%>
+    </div>
+
+
 <% end %>
+</div>
+<script>
+
+  $('#ranger').click(function () {
+
+  $('#target').text($('#ranger').val())
+
+  });
+</script>

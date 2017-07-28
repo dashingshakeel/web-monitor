@@ -31,7 +31,7 @@ class ServicesController < ApplicationController
         format.html { redirect_to @service, notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else
-        format.html { render :new }
+        format.html { redirect_to user_path(current_user) }
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end

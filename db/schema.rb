@@ -18,10 +18,12 @@ ActiveRecord::Schema.define(version: 20170726053638) do
     t.integer  "duration"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "supervisor_id"
+    t.integer  "supervisor_id_id"
     t.index ["supervisor_id"], name: "index_services_on_supervisor_id"
+    t.index ["supervisor_id_id"], name: "index_services_on_supervisor_id_id"
     t.index ["type_id"], name: "index_services_on_type_id"
   end
 

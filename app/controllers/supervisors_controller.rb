@@ -10,6 +10,8 @@ class SupervisorsController < ApplicationController
   # GET /supervisors/1
   # GET /supervisors/1.json
   def show
+    @supervisor = Supervisor.find(params[:id])
+    @service = @supervisor.services.build()
   end
 
   # GET /supervisors/new
@@ -24,12 +26,11 @@ class SupervisorsController < ApplicationController
   # POST /supervisors
   # POST /supervisors.json
   def create
-    @user = User.find(current_user.id)
     @supervisor = current_user.supervisors.build(supervisor_params)
-
+   
     respond_to do |format|
       if @supervisor.save
-        format.html { redirect_to @user, notice: 'Supervisor was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Supervisor was successfully created.' }
         format.json { render :show, status: :created, location: @supervisor }
       else
         format.html { render :new }
@@ -74,6 +75,6 @@ class SupervisorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supervisor_params
-      params.require(:supervisor).permit(:name,:url,:user_id)
+      params.require(:supervisor).permit(:name,:url,:user_id , services_attributes: [:id, :type_id,:supervisor_id, :port,:duration, :start_time, :end_time])
     end
 end

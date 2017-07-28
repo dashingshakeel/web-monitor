@@ -30,14 +30,11 @@
 
   <% f.fields_for :services do |ff| %>
     <div class="field">
-    <%= ff.time_select :start_time, :minute_step => 15, :ampm => true %>
+      <%= ff.time_select :start_time, :minute_step => 15, :ampm => true %>
     </div>
+ 
     <div class="field">
-     <%= ff.range_field_tag :duration, 30, :min => 5, :max => 60 ,:step => 5 %>
-      <div id='target'>30</div>
-    </div>
-    <div class="field">
-    <%= ff.time_select :end_time, :minute_step => 15, :ampm => true %>
+      <%= ff.time_select :end_time, :minute_step => 15, :ampm => true %>
     </div>
   <% end %>
 

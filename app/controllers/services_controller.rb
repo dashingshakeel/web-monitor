@@ -24,8 +24,15 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
-    @service = Service.new(service_params)
-
+    supervisor = Supervisor.find_by(id: params[:id])
+    @service = Service.new({
+      type_id: params[:type_id],
+       port: params[:port],
+       service_id: supervisor.id,
+       duration: params[:duration],
+       start_time: params[:start_time],
+       end_time: params[:end_time]
+      })
     respond_to do |format|
       if @service.save
         format.html { redirect_to @service, notice: 'Service was successfully created.' }

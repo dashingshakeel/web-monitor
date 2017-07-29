@@ -11,7 +11,8 @@ class SupervisorsController < ApplicationController
   # GET /supervisors/1.json
   def show
     @supervisor = Supervisor.find(params[:id])
-    @service = @supervisor.services.build()
+    @all_types = Type.all
+    @service = Service.new
   end
 
   # GET /supervisors/new
@@ -75,6 +76,9 @@ class SupervisorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supervisor_params
-      params.require(:supervisor).permit(:name,:url,:user_id , services_attributes: [:id, :type_id,:supervisor_id, :port,:duration, :start_time, :end_time])
+      params.require(:supervisor).permit(:name,:url,:user_id)
+    end
+    def service_params
+      params.fetch(:service,{}).permit(:type_id, :port,:duration, :start_time, :end_time)
     end
 end

@@ -5,8 +5,8 @@ class CreateServices < ActiveRecord::Migration[5.0]
       t.references :supervisor, foreign_key: true
       t.string :port
       t.integer :duration
-      t.datetime :start_time
-      t.datetime :end_time
+      t.time :start_time
+      t.time :end_time
 
       t.timestamps
     end

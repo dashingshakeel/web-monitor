@@ -17,7 +17,7 @@
   <tbody>
     <% @supervisors.each do |supervisor| %>
       <tr>
-          <td><%= link_to supervisor.name, supervisor %></td>
+          <td><%= link_to supervisor.name, new_supervisor_service_path(supervisor) %></td>
         <td class="url"><%= supervisor.url %></td>
     
         <td><%= link_to 'Edit', edit_supervisor_path(supervisor) %></td>

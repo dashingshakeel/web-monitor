@@ -12,7 +12,7 @@ class SupervisorsController < ApplicationController
   def show
     @supervisor = Supervisor.find(params[:id])
     @all_types = Type.all
-    @service = Service.new
+    @service = @supervisor.services.build
   end
 
   # GET /supervisors/new

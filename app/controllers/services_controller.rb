@@ -28,14 +28,15 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @supervisor = Supervisor.find(params[:supervisor_id])
-  
+    
     @service = @supervisor.services.new(service_params)
     respond_to do |format|
       if @service.save
+        RequestWorkers.perform_async(@supervisor.id,@service.id,@service.type.id,current_user.id, @supervisor.url)
         format.html { redirect_to @supervisor, notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else
-        format.html { redirect_to @supervisor,notice: 'Eror.' }
+        format.html { redirect_to new_supervisor_service_path(@supervisor),notice: 'Eror.' }
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
@@ -78,5 +79,6 @@ class ServicesController < ApplicationController
     def service_params
       params.fetch(:service,{}).permit(:type_id, :port, :duration, :start_time, :end_time)
     end
+
 end
 

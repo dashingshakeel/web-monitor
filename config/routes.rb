@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get 'users/new'
-
+  require 'sidekiq/web'
+  mount Sidekiq::Web => "/sidekiq"
   root 'welcome#index'
   resources :users
   get  '/signup',  to: 'users#new'

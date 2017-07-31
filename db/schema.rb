@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726051305) do
+ActiveRecord::Schema.define(version: 20170730151153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "logs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "supervisor_id"
+    t.integer  "service_id"
+    t.string   "status"
+    t.integer  "type_id"
+    t.string   "response_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["service_id"], name: "index_logs_on_service_id", using: :btree
+    t.index ["supervisor_id"], name: "index_logs_on_supervisor_id", using: :btree
+    t.index ["type_id"], name: "index_logs_on_type_id", using: :btree
+    t.index ["user_id"], name: "index_logs_on_user_id", using: :btree
+  end
 
   create_table "services", force: :cascade do |t|
     t.integer  "type_id"
@@ -50,6 +65,10 @@ ActiveRecord::Schema.define(version: 20170726051305) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "logs", "services"
+  add_foreign_key "logs", "supervisors"
+  add_foreign_key "logs", "types"
+  add_foreign_key "logs", "users"
   add_foreign_key "services", "supervisors"
   add_foreign_key "services", "types"
   add_foreign_key "supervisors", "users"

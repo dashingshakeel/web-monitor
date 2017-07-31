@@ -1,3 +1,3 @@
 class Type < ApplicationRecord
- belongs_to :service
+ has_one :service
 end

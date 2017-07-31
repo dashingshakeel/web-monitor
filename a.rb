@@ -35,4 +35,4 @@ def port_open?(ip, port, seconds=1)
 rescue Timeout::Error
   false
 end
-puts port_open?("https://github.com",80)
+puts port_open?("http://github.com",80)

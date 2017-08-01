@@ -10,6 +10,9 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.json
   def show
+    @supervisor = Supervisor.find(params[:supervisor_id])
+    @service = Service.find(params[:id])
+    @logs = Log.where(service_id: @service.id)
   end
 
   # GET /services/new
@@ -32,7 +35,7 @@ class ServicesController < ApplicationController
     @service = @supervisor.services.new(service_params)
     respond_to do |format|
       if @service.save
-        RequestWorkers.perform_async(@supervisor.id,@service.id,@service.type.id,current_user.id, @supervisor.url)
+        RequestWorkers.perform_async(@supervisor.id,@service.id,@service.type.id,@service.start_time.strftime("%H%M%S"),@service.end_time.strftime("%H%M%S"),@service.duration, @service.port,current_user.id, @supervisor.url)
         format.html { redirect_to @supervisor, notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else

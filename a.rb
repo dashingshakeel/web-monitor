@@ -2,37 +2,30 @@
 
 require 'timeout'
 require 'socket'
+ require "net/http"
+   require "uri"
+   require 'socket'
+   require 'timeout'
+   require 'net/ping'
 
-class Ping 
-  def self.pingecho(host, timeout=5, service="echo")
-    begin
-      Timeout::timeout(timeout) do
-        s = TCPSocket.new(host, service)
-        s.close
-      end
-    rescue Errno::ECONNREFUSED
-      return true
-    rescue   Timeout::Error, StandardError 
-      return false 
-    end
-    return true
-  end
 
+
+require 'net/ping'
+
+def up?(host)
+    check = Net::Ping::External.new(host)
+    check.ping?
 end
 
+chost = 'facebook.com'
+puts up?(chost) # prints "true" if ping replies
 
+uri = URI.parse('http://facebook.com')
+              http = Net::HTTP.new(uri.host, uri.port)
+              request = Net::HTTP::Get.new(uri.request_uri)
+              start_time = Time.now
+              response = http.request(request)
+              responset = Time.now - start_time 
 
-
-def port_open?(ip, port, seconds=1)
-  Timeout.timeout(seconds) do
-    begin
-      TCPSocket.new(ip, port).close
-      true
-    rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
-      false
-    end
-  end
-rescue Timeout::Error
-  false
-end
-puts port_open?("http://github.com",80)
+              
+              puts l = response.code 

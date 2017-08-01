@@ -5,22 +5,20 @@
 
 <div class="left-supervisors">
 <%= link_to "Add new", new_supervisor_path,class: "btn btn-primary" , id: "button2"%>
-  <table>
+  <table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>URL:</th>
-      <th colspan="3"></th>
+      <th scope="row">Name</th>
+      <th scope="row">URL:</th>
+      <th scope="row"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @supervisors.each do |supervisor| %>
       <tr>
-          <td><%= link_to supervisor.name, new_supervisor_service_path(supervisor) %></td>
+        <td><%= link_to supervisor.name, supervisor_path(supervisor) %></td>
         <td class="url"><%= supervisor.url %></td>
-    
-        <td><%= link_to 'Edit', edit_supervisor_path(supervisor) %></td>
         <td><%= link_to 'x', supervisor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

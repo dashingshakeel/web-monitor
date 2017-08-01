@@ -5,4 +5,5 @@ class Service < ApplicationRecord
   validates :start_time,presence: true
   validates :end_time,presence: true
   belongs_to :supervisor
+  has_many :logs ,:dependent => :destroy
 end

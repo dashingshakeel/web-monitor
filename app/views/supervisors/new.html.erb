@@ -19,25 +19,16 @@
   <div class="field">
     <%= f.label :name %>
     <br>
-    <%= f.text_field :name , class: 'form-control' %>
+    <%= f.text_field :name , class: 'form-control',placeholder: 'name of supervisor' %>
   </div>
  <div class="field">
     <%= f.label :url %>
     <br>
-    <%= f.text_field :url, class: 'form-control'  %>
+    <%= f.text_field :url, class: 'form-control' ,placeholder: 'enter URL without https://'  %>
   </div>
 
 
-  <% f.fields_for :services do |ff| %>
-    <div class="field">
-      <%= ff.time_select :start_time, :minute_step => 15, :ampm => true %>
-    </div>
  
-    <div class="field">
-      <%= ff.time_select :end_time, :minute_step => 15, :ampm => true %>
-    </div>
-  <% end %>
-
   <div class="actions">
     <%= f.submit "create", class: "btn btn-primary" , id: "button"%>
     </div>

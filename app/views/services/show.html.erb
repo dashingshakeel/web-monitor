@@ -1,0 +1,32 @@
+<%= link_to "Supervisors", user_path(current_user),class: "btn btn-primary" , id: "button2"%>
+<%= link_to "Back", supervisor_path(@supervisor),class: "btn btn-primary" , id: "button2"%>
+<%= link_to "LOG OUT", logout_path, method: :delete ,class: "btn btn-primary" , id: "button1"%>
+
+
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="row">status </th>
+      
+      <th scope="row">Response</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @logs.each do |log| %>
+      <tr>
+        <td class="url"><%= log.status %></td>
+        
+        <td class="url"><%= log.response_time%></td>
+        
+          </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+

@@ -11,8 +11,9 @@ class SupervisorsController < ApplicationController
   # GET /supervisors/1.json
   def show
     @supervisor = Supervisor.find(params[:id])
-    @all_types = Type.all
-    @service = @supervisor.services.build
+
+    @services = Service.where(supervisor_id: @supervisor.id )
+
   end
 
   # GET /supervisors/new

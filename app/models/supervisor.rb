@@ -1,8 +1,8 @@
 class Supervisor < ApplicationRecord
   belongs_to :user
-   validates :name,presence: true, length: {maximum: 50}
+    validates :name,presence: true, length: {maximum: 50}
     validates :url,presence: true, length: {maximum: 100}
-    has_many :services
+    has_many :services ,:dependent => :destroy
 
   accepts_nested_attributes_for :services,
     :allow_destroy => true,

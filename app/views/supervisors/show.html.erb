@@ -1,2 +1,40 @@
 <%= link_to "Back", user_path(current_user),class: "btn btn-primary" , id: "button2"%>
 <%= link_to "LOG OUT", logout_path, method: :delete ,class: "btn btn-primary" , id: "button1"%>
+
+<%= link_to "Add new service", new_supervisor_service_path(@supervisor),class: "btn btn-primary" , id: "button2"%>
+
+
+
+<div class="left-supervisors">
+
+  <table class="table">
+  <thead>
+    <tr>
+     <th>service_type</th>
+
+      <th scope="row">Port:</th>
+      <th scope="row">frequency</th>
+      <th scope="row" >timing</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+       <td><%= link_to service.type.name, supervisor_service_path(@supervisor,service) %></td>
+        <% if service.port %>
+        <td class="url"><%= service.port%></td>
+        <% end %>
+        <td class="url"><%= service.duration %></td>
+        <td class="url"><%= service.start_time.strftime("%H:%M") %>-<%= service.end_time.strftime("%H:%M") %></td>   
+        
+          </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+</div>
+
+
+
